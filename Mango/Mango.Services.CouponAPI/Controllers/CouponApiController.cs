@@ -28,7 +28,7 @@ public class CouponApiController : ControllerBase
     {
         try
         {
-            IEnumerable<Coupon> objList = _context.Coupons.ToList();
+            IEnumerable<Coupon?> objList = _context.Coupons.ToList();
             _response.Result = _mapper.Map<IEnumerable<CouponDTO>>(objList);
             _response.IsSuccess = true;
             _response.Message = "This return is success";
@@ -97,6 +97,7 @@ public class CouponApiController : ControllerBase
            _context.Coupons.Add(_mapper.Map<Coupon>(couponDTO));
             _context.SaveChanges();
             _response.Result = _mapper.Map<CouponDTO>(couponDTO);
+            _response.IsSuccess = true;
         }
         catch (Exception ex)
         {
@@ -115,6 +116,7 @@ public class CouponApiController : ControllerBase
            _context.Coupons.Update(_mapper.Map<Coupon>(couponDTO));
             _context.SaveChanges();
             _response.Result = _mapper.Map<CouponDTO>(couponDTO);
+            _response.IsSuccess = true;
         }
         catch (Exception ex)
         {
@@ -130,9 +132,10 @@ public class CouponApiController : ControllerBase
     {
         try
         {
-            Coupon obj = _context.Coupons.FirstOrDefault(x => x.CouponId == id);
+            Coupon? obj = _context.Coupons.FirstOrDefault(x => x.CouponId == id);
                          _context.Coupons.Remove(obj);
             _context.SaveChanges();
+            _response.IsSuccess = true;
         }
         catch (Exception ex)
         {
