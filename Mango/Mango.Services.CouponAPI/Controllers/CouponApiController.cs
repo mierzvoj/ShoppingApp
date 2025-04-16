@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Mango.Services.CouponAPI.Controllers;
 
-[Microsoft.AspNetCore.Components.Route("api/[controller]")]
+[Microsoft.AspNetCore.Components.Route("api/coupon")]
 [ApiController]
 public class CouponApiController : ControllerBase
 {

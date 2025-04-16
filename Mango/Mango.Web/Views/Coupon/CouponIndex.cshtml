@@ -1,0 +1,44 @@
+﻿@model List<Mango.Web.Models.CouponDTO>
+
+@{
+    ViewData["Title"] = "Coupon Index";
+}
+
+<h1>Coupons</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Coupon Code</th>
+            <th>Discount Amount</th>
+            <th>Min Amount</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var coupon in Model)
+        {
+            <tr>
+                <td>@coupon.CouponCode</td>
+                <td>@coupon.DiscountAmount</td>
+                <td>@coupon.MinAmount</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@coupon.CouponId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@coupon.CouponId" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@coupon.CouponId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No coupons available.</p>
+}
