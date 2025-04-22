@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Mango.Services.CouponAPI.Controllers;
 
-[Microsoft.AspNetCore.Components.Route("api/coupon")]
+[Microsoft.AspNetCore.Components.Route("api/coupons")]
 [ApiController]
 public class CouponApiController : ControllerBase
 {
@@ -23,8 +23,8 @@ public class CouponApiController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/api/[controller]/[action]")]
-    public ResponseDTO GetAll()
+    [Route("/api/coupon")]
+    public ResponseDTO Get()
     {
         try
         {
@@ -43,7 +43,7 @@ public class CouponApiController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/api/[controller]/{id:int}")]
+    [Route("{id:int}")]
     public ResponseDTO Get(int id)
     {
         try
